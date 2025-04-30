@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Eiloing作品",
+    pageTitle: "Eiloing",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -40,7 +40,7 @@ const config: QuartzConfig = {
           // --bg-200:#f5f4f1;
           // --bg-300:#cccbc8;
             
-          light: "##f5f4f1",
+          light: "#f5f4f1",
           lightgray: "#e5e5e5",
           gray: "#b8b8b8",
           darkgray: "#4e4e4e",
