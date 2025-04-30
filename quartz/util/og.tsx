@@ -5,7 +5,7 @@ import { QuartzPluginData } from "../plugins/vfile"
 import { JSXInternal } from "preact/src/jsx"
 import { FontSpecification, getFontSpecificationName, ThemeKey } from "./theme"
 import path from "path"
-import { QUARTZ } from "./path"
+import { joinSegments, QUARTZ } from "./path"
 import { formatDate, getDate } from "../components/Date"
 import readingTime from "reading-time"
 import { i18n } from "../i18n"
@@ -14,55 +14,78 @@ import chalk from "chalk"
 const defaultHeaderWeight = [700]
 const defaultBodyWeight = [400]
 
+const newsreaderFontPath = joinSegments(QUARTZ, "static\\fonts", "FZFWZhuZiAOldMincho.ttf");
+
 export async function getSatoriFonts(headerFont: FontSpecification, bodyFont: FontSpecification) {
-  // Get all weights for header and body fonts
+  // 获取 header 和 body 字体的所有权重
   const headerWeights: FontWeight[] = (
     typeof headerFont === "string"
       ? defaultHeaderWeight
       : (headerFont.weights ?? defaultHeaderWeight)
-  ) as FontWeight[]
+  ) as FontWeight[];
+
   const bodyWeights: FontWeight[] = (
     typeof bodyFont === "string" ? defaultBodyWeight : (bodyFont.weights ?? defaultBodyWeight)
-  ) as FontWeight[]
+  ) as FontWeight[];
 
-  const headerFontName = typeof headerFont === "string" ? headerFont : headerFont.name
-  const bodyFontName = typeof bodyFont === "string" ? bodyFont : bodyFont.name
+  const headerFontName = typeof headerFont === "string" ? headerFont : headerFont.name;
+  const bodyFontName = typeof bodyFont === "string" ? bodyFont : bodyFont.name;
 
-  // Fetch fonts for all weights and convert to satori format in one go
+  // 获取所有权重的字体，并转换为 Satori 格式
   const headerFontPromises = headerWeights.map(async (weight) => {
-    const data = await fetchTtf(headerFontName, weight)
-    if (!data) return null
+    const data = await fetchTtf(headerFontName, weight);
+    if (!data) return null;
     return {
       name: headerFontName,
       data,
       weight,
       style: "normal" as const,
-    }
-  })
+    };
+  });
 
   const bodyFontPromises = bodyWeights.map(async (weight) => {
-    const data = await fetchTtf(bodyFontName, weight)
-    if (!data) return null
+    const data = await fetchTtf(bodyFontName, weight);
+    if (!data) return null;
     return {
       name: bodyFontName,
       data,
       weight,
       style: "normal" as const,
-    }
-  })
+    };
+  });
 
   const [headerFonts, bodyFonts] = await Promise.all([
     Promise.all(headerFontPromises),
     Promise.all(bodyFontPromises),
-  ])
+  ]);
 
-  // Filter out any failed fetches and combine header and body fonts
+  // 过滤掉失败的获取并组合 header 和 body 字体
   const fonts: SatoriOptions["fonts"] = [
-    ...headerFonts.filter((font): font is NonNullable<typeof font> => font !== null),
-    ...bodyFonts.filter((font): font is NonNullable<typeof font> => font !== null),
-  ]
+    ...headerFonts
+      .filter((data) => data !== null)  // 过滤掉 null 值
+      .map((data) => ({
+        name: headerFontName,
+        data: data!.data,  // 确保 data 不为 null
+        weight: headerWeights[headerFonts.indexOf(data)],
+        style: "normal" as const,
+      })),
+    ...bodyFonts
+      .filter((data) => data !== null)  // 过滤掉 null 值
+      .map((data) => ({
+        name: bodyFontName,
+        data: data!.data,  // 确保 data 不为 null
+        weight: bodyWeights[bodyFonts.indexOf(data)],
+        style: "normal" as const,
+      })),
+    {
+      name: "Newsreader",
+      data : await fs.readFile(path.resolve(newsreaderFontPath)),
+      weight: 400,
+      style: "normal" as const,
+    },
+  ];
 
-  return fonts
+  return fonts;
 }
 
 /**
