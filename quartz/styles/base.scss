@@ -178,22 +178,33 @@ a {
       margin-top: 0;
       margin-bottom: 0;
     }
+
     p {
       text-indent: 2em; // 默认缩进
       text-align: justify;
       text-justify: inter-ideograph; // 适合中文文字
+      line-height: 1.8rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     
-      // 如果 <p> 的第一个子元素是 <img>，取消缩进
+      // 以下情况取消缩进：
+    
+      // 1. 第一个子元素是图片
       &:has(> img:first-child) {
         text-indent: 0;
       }
     
-      // 可扩展：如果首元素是 figure 或其他非文本结构也不缩进
+      // 2. 第一个子元素是 <figure>
       &:has(> figure:first-child) {
         text-indent: 0;
       }
-    }
     
+      // 3. 第一个子元素是 <a>，用于标签列表等场景
+      &:has(> a:first-child) {
+        text-indent: 0;
+      }
+    }
+
     blockquote > p {
       text-indent: 0;
     }    
@@ -530,9 +541,8 @@ code {
 tbody,
 li,
 p {
-  line-height: 1.8rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  line-height: 1.2rem;
+  margin-top: 0.5rem;
 }
 
 .table-container {
