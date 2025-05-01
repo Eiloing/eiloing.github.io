@@ -149,7 +149,6 @@ This example will generate images that look as follows:
 | ------------------------------------------ | ----------------------------------------- |
 | ![[custom-social-image-preview-light.png]] | ![[custom-social-image-preview-dark.png]] |
 
-{% raw %}
 ```tsx
 import { SatoriOptions } from "satori/wasm"
 import { GlobalConfiguration } from "../cfg"
@@ -259,18 +258,18 @@ export const og: SocialImageOptions["Component"] = (
   const Li = [created, reading]
 
   return (
-    <div
-      style="
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        height: 100%;
-        width: 100%;
-        background-image: url('https://{{ site.url }}/static/og-image.jpeg');
-        background-size: 100% 100%;
-      "
-    >
+<div
+  style="
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+    background-image: url('https://{{ site.url }}/static/og-image.jpeg');
+    background-size: 100% 100%;
+  "
+>
 
       <div
         style={{
@@ -360,4 +359,3 @@ export const og: SocialImageOptions["Component"] = (
   )
 }
 ```
-{% endraw %}
