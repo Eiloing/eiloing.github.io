@@ -157,6 +157,7 @@ a {
 .page {
   width: calc(#{map.get($breakpoints, desktop)} + 300px);
   margin: 0 auto;
+  font-family: "FZLaoMing", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   & article {
     & > h1 {
       font-size: 2rem;
@@ -179,6 +180,8 @@ a {
     }
     p {
       text-indent: 2em; // 默认缩进
+      text-align: justify;
+      text-justify: inter-ideograph; // 适合中文文字
     
       // 如果 <p> 的第一个子元素是 <img>，取消缩进
       &:has(> img:first-child) {
@@ -189,8 +192,8 @@ a {
       &:has(> figure:first-child) {
         text-indent: 0;
       }
-    }    
-
+    }
+    
     blockquote > p {
       text-indent: 0;
     }    
