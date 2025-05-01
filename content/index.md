@@ -1,7 +1,7 @@
 ---
 title: Eiloing
 ---
-AO3  [Eiloing - Works | Archive of Our Own](https://archiveofourown.org/users/Eiloing/works)
+AO3  [点击此链接跳转我的AO3主页](https://archiveofourown.org/users/Eiloing/works)
 
-Tumbl  https://www.tumblr.com/eiloing?source=share
+Tumbl  [点击此链接跳转我的tumblr主页](https://archiveofourown.org/users/Eiloing/works)
 
