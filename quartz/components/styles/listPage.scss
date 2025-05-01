@@ -1,10 +1,42 @@
 @use "../../styles/variables.scss" as *;
 
-ul.section-ul {
+.section-ul {
   list-style: none;
   margin-top: 2em;
   padding-left: 0;
+
+  .section-li {
+    // 可选：给 li 添加一些间距或边框
+    margin-bottom: 1em;
+
+    .section {
+      // 若 section 也有通用样式可补充在此
+      padding: 1em;
+
+      .tags {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+
+        .tag {
+          background-color: #e0e0e0;
+          border-radius: 12px;
+          padding: 0.3em 0.8em;
+          margin-left: 0.5em;
+          font-size: 0.9em;
+          color: #333;
+          white-space: nowrap;
+
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
 }
+
 
 li.section-li {
   margin-bottom: 1em;
@@ -15,7 +47,7 @@ li.section-li {
 
     @media all and ($mobile) {
       & > .tags {
-        display: none;
+        display: flex;
       }
     }
 

@@ -43,6 +43,10 @@ section {
   color: var(--darkgray);
 }
 
+em {
+  color: #b2b2b2;
+}
+
 p,
 ul,
 text,
@@ -173,9 +177,27 @@ a {
       margin-top: 0;
       margin-bottom: 0;
     }
+    p {
+      text-indent: 2em; // 默认缩进
+    
+      // 如果 <p> 的第一个子元素是 <img>，取消缩进
+      &:has(> img:first-child) {
+        text-indent: 0;
+      }
+    
+      // 可扩展：如果首元素是 figure 或其他非文本结构也不缩进
+      &:has(> figure:first-child) {
+        text-indent: 0;
+      }
+    }    
+
+    blockquote > p {
+      text-indent: 0;
+    }    
 
     p > strong {
       color: var(--dark);
+      color: #375e99;
     }
   }
 
