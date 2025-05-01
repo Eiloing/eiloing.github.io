@@ -14,7 +14,7 @@ import chalk from "chalk"
 const defaultHeaderWeight = [700]
 const defaultBodyWeight = [400]
 
-const newsreaderFontPath = joinSegments(QUARTZ, "static\\fonts", "FZFWZhuZiAOldMincho.ttf");
+const newsreaderFontPath = joinSegments(QUARTZ, "static/fonts", "FZFWZhuZiAOldMincho.ttf");
 
 export async function getSatoriFonts(headerFont: FontSpecification, bodyFont: FontSpecification) {
   // 获取 header 和 body 字体的所有权重
