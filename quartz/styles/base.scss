@@ -203,6 +203,16 @@ a {
       &:has(> a:first-child) {
         text-indent: 0;
       }
+
+      &.align-right {
+        text-align: right !important;
+        text-indent: 0;
+      }
+
+      &.center {
+        text-align: center !important;
+        text-indent: 0;
+      }
     }
 
     blockquote > p {

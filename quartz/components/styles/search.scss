@@ -4,6 +4,7 @@
   position: fixed;
   min-width: 16rem;
   max-width: 20rem;
+  top: 8rem;
   @media all and ($mobile) {
     flex-grow: 0.3;
   }
