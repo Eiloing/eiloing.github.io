@@ -34,7 +34,7 @@
       }
     
       // 响应式媒体查询：手机屏幕优化布局
-      @media all and ($mobile) {
+      @media all and ($tablet) {
         display: inline-block;
     
         .tags {
