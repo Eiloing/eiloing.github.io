@@ -10,15 +10,14 @@
     margin-bottom: 1em;
 
     .section {
-      // 若 section 也有通用样式可补充在此
       padding: 1em;
-
+    
       .tags {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: flex-end;
-
+    
         .tag {
           background-color: #e0e0e0;
           border-radius: 12px;
@@ -27,13 +26,30 @@
           font-size: 0.9em;
           color: #333;
           white-space: nowrap;
-
+    
           &:first-child {
             margin-left: 0;
           }
         }
       }
-    }
+    
+      // 响应式媒体查询：手机屏幕优化布局
+      @media all and ($mobile) {
+        display: inline-block;
+    
+        .tags {
+          display: flex;
+          flex-flow: row wrap; // 等效于 flex-direction: row + flex-wrap: wrap
+          flex-direction: row-reverse;
+          justify-content: flex-end;
+          margin-top: 1rem;
+        }
+
+        .desc {
+          margin-top: 1rem;
+        }
+      }
+    }    
   }
 }
 
