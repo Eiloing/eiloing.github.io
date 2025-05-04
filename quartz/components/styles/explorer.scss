@@ -27,16 +27,10 @@
 }
 
 .explorer {
-  position: fixed;
-  top: 11rem;
-  width: 260px;
-  height: calc(100vh - 16rem);
-  overflow-y: auto;
-  z-index: 1;
-  line-height: 1.2rem;
-
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;
+
   min-height: 1.2rem;
   flex: 0 1 auto;
   &.collapsed {

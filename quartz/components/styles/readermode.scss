@@ -1,12 +1,12 @@
 .readermode {
   cursor: pointer;
   padding: 0;
-  position: fixed;
-  margin-left: -20px;
+  position: relative;
   background: none;
   border: none;
   width: 20px;
   height: 20px;
+  margin: 0;
   text-align: inherit;
   flex-shrink: 0;
 
