@@ -142,7 +142,7 @@ a {
 }
 
 .page {
-  max-width: calc(#{map.get($breakpoints, desktop)} + 300px);
+  max-width: calc(#{map.get($breakpoints, desktop)} + 250px);
   margin: 0 auto;
   font-family: "FZLaoMing", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   & article {
@@ -236,7 +236,7 @@ a {
     }
 
     @media all and not ($desktop) {
-      padding: 0 1rem;
+      padding: 0 2rem;
     }
     @media all and ($mobile) {
       margin: 0 auto;
